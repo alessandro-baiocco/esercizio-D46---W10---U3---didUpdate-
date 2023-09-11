@@ -1,7 +1,8 @@
 import { Component } from "react";
+import { Alert, Spinner } from "react-bootstrap";
 
 class CommentZone extends Component {
-  state = { comment: "" };
+  state = { comment: "", loading: true, error: false, alert: true };
   fetchatutto = async (e) => {
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments`, {
@@ -13,8 +14,11 @@ class CommentZone extends Component {
       if (response.ok) {
         const Data = await response.json();
         this.setState({ comment: Data });
+        this.setState({ loading: false });
       } else {
-        alert("nope");
+        this.setState({ loading: false });
+        this.setState({ error: true });
+        this.setState({ status: response.status });
       }
     } catch (err) {
       console.log(err);
@@ -33,6 +37,14 @@ class CommentZone extends Component {
   render() {
     return (
       <span>
+        {this.state.loading && <Spinner />}
+        {this.state.error && this.state.alert && (
+          <Alert variant="danger" onClose={() => this.setState({ alert: false })}>
+            <Alert.Heading>something wrong</Alert.Heading>
+            <p>you got error: {this.state.status}</p>
+          </Alert>
+        )}
+
         {this.state.comment &&
           this.props.asinId &&
           this.state.comment

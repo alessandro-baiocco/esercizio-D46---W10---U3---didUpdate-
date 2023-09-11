@@ -7,6 +7,10 @@ class BookList extends Component {
     search: "",
   };
 
+  changeBook = (asin) => {
+    this.setState({ selected: asin });
+  };
+
   filtra = (query) => {
     this.setState({ search: query });
   };
@@ -25,8 +29,9 @@ class BookList extends Component {
                 key={`book-${index}`}
                 onClick={() => {
                   this.props.checkAsinId(book.asin);
-                  this.setState({ selected: `${book.asin}` });
+                  this.changeBook(`${book.asin}`);
                 }}
+                className="p-0"
               >
                 <SingleBook title={book.title} image={book.img} idDelLibro={book.asin} attivo={this.state.selected} />
               </Col>

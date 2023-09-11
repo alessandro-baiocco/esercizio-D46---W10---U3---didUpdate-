@@ -5,22 +5,10 @@ import CommentZone from "./CommentZone";
 
 class SingleBook extends Component {
   state = { selected: false, commenti: [], asin: "" };
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.idDelLibro === this.props.attivo) {
-  //     this.setState({ selected: true });
-  //     console.log(this.props.idDelLibro, this.props.attivo);
-  //   }
-  // }
 
   render() {
     return (
-      <Card
-        style={{ border: this.state.selected ? "2px solid blue" : "2px solid red" }}
-        onClick={() => {
-          this.setState({ selected: true });
-          this.setState({ asin: `${this.props.idDelLibro}` });
-        }}
-      >
+      <Card style={{ border: this.props.idDelLibro === this.props.attivo ? "2px solid blue" : "2px solid red" }}>
         <img src={this.props.image} className="card-img-top" alt={this.props.title} />
         <div className="card-body">
           <h5 className="card-title">{this.props.title}</h5>
