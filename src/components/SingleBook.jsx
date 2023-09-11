@@ -5,12 +5,12 @@ import CommentZone from "./CommentZone";
 
 class SingleBook extends Component {
   state = { selected: false, commenti: [], asin: "" };
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.idDelLibro === this.props.attivo) {
-      this.setState({ selected: true });
-      console.log(this.props.idDelLibro, this.props.attivo);
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.props.idDelLibro === this.props.attivo) {
+  //     this.setState({ selected: true });
+  //     console.log(this.props.idDelLibro, this.props.attivo);
+  //   }
+  // }
 
   render() {
     return (
