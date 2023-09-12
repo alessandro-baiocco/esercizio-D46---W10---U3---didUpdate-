@@ -55,7 +55,7 @@ class CommentZone extends Component {
   render() {
     return (
       <span>
-        {this.state.loading && (
+        {this.props.asinId && this.state.loading && (
           <div className="text-center my-3">
             <Spinner variant="info" />
           </div>
