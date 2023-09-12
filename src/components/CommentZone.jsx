@@ -46,9 +46,9 @@ class CommentZone extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props !== prevProps) {
+    if (this.props.asinId !== prevProps.asinId) {
       this.fetchatutto();
-      console.log(this.props, prevProps);
+      console.log(this.props.asinId, prevProps.asinId);
     }
   }
 
